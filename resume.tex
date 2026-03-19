@@ -1,0 +1,149 @@
+% !TeX TS-program = xelatex
+
+% ========================================
+% 用户自定义配置区 - 请根据实际情况修改
+% ========================================
+
+% 个人基本信息
+\def\UserName{您的姓名}
+\def\UserPhone{您的电话号码}
+\def\UserEmail{your.email@example.com}
+\def\UserGender{您的性别}
+\def\UserAge{您的年龄}
+\def\UserDegree{您的学历}
+\def\UserAdvisor{导师姓名}
+\def\UserHometown{您的籍贯}
+\def\UserPoliticalStatus{您的政治面貌}
+
+% 教育经历
+\def\UniversityA{大学名称}
+\def\MajorMaster{硕士专业名称}
+\def\CollegeMaster{学院名称}
+\def\MajorBachelor{本科专业名称}
+\def\CollegeBachelor{学院名称}
+
+% 研究方向
+\def\ResearchDirection{您的研究方向，如：人工智能、深度学习等}
+
+% ========================================
+% 文档开始
+% ========================================
+
+\documentclass{resume}
+\ResumeName{\UserName}
+% 如果想插入照片，请使用以下两个库。
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{etoolbox}
+
+\definecolor{accentcolor}{RGB}{0, 122, 204}
+\colorlet{darkeraccent}{accentcolor!80!black}
+\begin{document}	
+
+\setmainfont{Times New Roman}
+\ResumeContacts{
+	\faPhone~\textbf{电话: \UserPhone}, 
+	\faEnvelope~\textbf{邮箱:} \ResumeUrl{mailto:\UserEmail}{\textbf{\UserEmail}} \\
+	性别: \UserGender, 年龄: \UserAge, 学历: \UserDegree, 导师: \UserAdvisor\\
+	籍贯: \UserHometown, 政治面貌: \UserPoliticalStatus\\
+	%	研究方向: \ResearchDirection\\
+	%	导师: 导师姓名（职称、荣誉头衔）, 团队: 实验室/团队名称
+}
+
+% ========================================
+% 照片插入示例
+% ========================================
+% 当前使用占位图片（identification_photo.jpg 和 icons/nwpu-icon.jpg）
+% 请将 identification_photo.jpg 替换为您自己的照片
+\begin{tikzpicture}[remember picture, overlay]
+	\node [anchor=north east, inner sep=1cm]  at (current page.north east) 
+	{\includegraphics[width=3.0cm]{identification_photo.jpg}};
+	
+	\node [anchor=north west, inner sep=1.0cm] at (current page.north west) 
+	{\includegraphics[width=2.5cm]{icons/nwpu-icon.jpg}};
+\end{tikzpicture}
+
+% 如果不想显示照片，或者想自定义照片格式，可以使用以下代码：
+% 取消注释下面的代码，并注释掉上面的照片插入代码
+% \begin{tikzpicture}[remember picture, overlay]
+%   \node [anchor=north east, inner sep=1cm]  at (current page.north east) 
+%      {\includegraphics[width=2cm]{identification_photo.jpg}};
+% \end{tikzpicture}
+
+\ResumeTitle
+
+
+%======================================================================
+\section{{\color{darkeraccent}\faGraduationCap~教育经历}}
+\ResumeItem
+[\UniversityA|硕士研究生]
+{\UniversityA}
+[\textnormal{\MajorMaster，\CollegeMaster|}  学术型硕士]
+[2023.09—2026.04（预计）]
+
+相关课程：请列出3-5门核心课程，如：多源不确定信息融合理论及应用、深度学习与遥感图像分析等
+
+研究方向：\ResearchDirection
+
+\ResumeItem
+[\UniversityA|本科生]
+{\UniversityA}
+[\textnormal{\MajorBachelor，\CollegeBachelor|} 工学学士]
+[2019.09—2023.06]
+相关课程：请列出3-5门核心课程，如：自动控制原理、模式识别、智能信息处理技术等
+
+%======================================================================
+\section{{\color{darkeraccent}\faWrench~项目经历}}
+
+\ResumeItem[]
+{\textbf{项目名称1:} 请填写项目级别（如：国家级、省级、企业横向等）}
+[]
+[您的角色]
+\begin{itemize}
+	\item \textbf{涉及技术:} 列出主要技术栈，如：Python、C/C++、深度学习框架等
+	\item \textbf{问题描述:} 简述项目的背景、目标和需要解决的问题
+	\item \textbf{核心贡献:} 描述您在项目中的主要工作和贡献
+	\item \textbf{概述:} 介绍项目的技术路线、方法和主要成果
+\end{itemize}
+
+\section{{\color{darkeraccent}\faBrain~科研经历}}
+
+\ResumeItem{\textbf{研究领域1：如：深度学习、计算机视觉等}}
+\begin{itemize}
+	\item \textbf{研究题目1（请替换为具体题目）}
+	\begin{itemize}[label=$\triangleright$]
+		\item \textbf{发表论文：}请填写论文题目、期刊/会议名称、发表年份、期刊级别
+		\item \textbf{贡献：}请说明您在论文中的角色（如：第一作者、共同一作、主要贡献者等）和主要工作
+		\item \textbf{创新点：}简要说明您的研究创新之处（1-2句话）
+		\item \textbf{成果：}说明研究的主要成果和指标（如：准确率提升、性能超越现有方法等）
+	\end{itemize}
+\end{itemize}
+
+%======================================================================
+\section{{\color{darkeraccent}\faMedal~荣誉奖项}}
+\begin{itemize}
+	\item 奖项名称1 \; （级别/排名，如：国家级、一等奖、第一负责人）
+	\item 奖项名称2 \; （级别/排名）
+	\item 奖项名称3 \; （级别/排名）
+\end{itemize}
+
+%======================================================================
+\section{{\color{darkeraccent}\faCode~技能专长}}
+\begin{itemize}
+	\item 操作系统: \win~Windows \linux~Linux （\ubuntu~Ubuntu、\fedora~Fedora）
+	\item 编程语言: \py~Python（熟练程度）, \cpp~C/C++（熟练程度）, \bash~Shell（熟练程度）, \matlab~Matlab（熟练程度）
+	\item 常用工具: \git~Git, \docker~Docker, \uv~UV, \torch~Pytorch, \pandas~Pandas, \matplotlib~Matplotlib, \sklearn~Scikit-learn
+	\item \faLanguage~语言: \textbf{外语名称} --- 通过的考试/水平，如：通过CET-6，听说读写良好
+\end{itemize}
+
+%======================================================================
+\section{{\color{darkeraccent}\faUser~自我评价}}
+\begin{itemize}
+	\item 请简要描述您的个人品质、工作态度、团队协作能力等（1-2句话）
+	\item 请描述您的学习能力、技术热情、兴趣特长等（1-2句话）
+	\item 请描述您的兴趣爱好（1句话）
+\end{itemize}
+
+
+\end{document}
